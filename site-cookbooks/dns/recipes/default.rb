@@ -27,10 +27,21 @@ end
 
 template "/etc/named.conf" do
   mode 0640
+  notifies :restart, "service[named]"
 end
 
 bash "root name server" do
   code <<-EOS
     dig . ns @198.41.0.4 > /var/named/named.ca
   EOS
+end
+
+template "/var/named/hoge.com.db" do
+  mode 0640
+  notifies :reload, "service[named]"
+end
+
+template "/var/named/fuga.com.db" do
+  mode 0640
+  notifies :reload, "service[named]"
 end
