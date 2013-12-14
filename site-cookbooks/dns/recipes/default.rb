@@ -41,6 +41,11 @@ template "/var/named/fuga.com.db" do
   notifies :reload, "service[named]"
 end
 
+template "/var/named/office-ore.net.db" do
+  mode 0640
+  notifies :reload, "service[named]"
+end
+
 service "named" do
   supports status: true, restart: true, reload: true
   action [:enable, :start]
