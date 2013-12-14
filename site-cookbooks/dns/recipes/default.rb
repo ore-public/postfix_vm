@@ -7,6 +7,10 @@
 # All rights reserved - Do Not Redistribute
 #
 
+service "iptables" do
+  action [:disable, :stop]
+end
+
 %w(bind bind-utils).each do |package_name|
   package package_name do
     action :install
