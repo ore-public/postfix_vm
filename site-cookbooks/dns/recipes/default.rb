@@ -20,11 +20,6 @@ bash "generate rndc.key" do
   creates "/etc/rndc.key"
 end
 
-service "named" do
-  supports status: true, restart: true, reload: true
-  action [:enable, :start]
-end
-
 template "/etc/named.conf" do
   mode 0640
   notifies :restart, "service[named]"
@@ -44,4 +39,9 @@ end
 template "/var/named/fuga.com.db" do
   mode 0640
   notifies :reload, "service[named]"
+end
+
+service "named" do
+  supports status: true, restart: true, reload: true
+  action [:enable, :start]
 end
