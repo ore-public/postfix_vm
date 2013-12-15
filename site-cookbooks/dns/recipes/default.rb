@@ -11,10 +11,15 @@ service "iptables" do
   action [:disable, :stop]
 end
 
-%w(bind bind-utils).each do |package_name|
+%w(screen bind bind-utils).each do |package_name|
   package package_name do
     action :install
   end
+end
+
+template "/home/vagrant/.screenrc" do
+  user "vagrant"
+  mode 0644
 end
 
 bash "generate rndc.key" do
