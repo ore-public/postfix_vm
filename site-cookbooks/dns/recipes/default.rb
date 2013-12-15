@@ -29,8 +29,14 @@ bash "generate rndc.key" do
   creates "/etc/rndc.key"
 end
 
+file "/etc/rndc.key" do
+  owner "named"
+  group "named"
+  mode 0644
+end
+
 template "/etc/named.conf" do
-  mode 0640
+  mode 0644
   notifies :restart, "service[named]"
 end
 
@@ -41,17 +47,23 @@ bash "root name server" do
 end
 
 template "/var/named/hoge.com.db" do
-  mode 0640
+  mode 0644
+  user "named"
+  group "named"
   notifies :reload, "service[named]"
 end
 
 template "/var/named/fuga.com.db" do
-  mode 0640
+  mode 0644
+  user "named"
+  group "named"
   notifies :reload, "service[named]"
 end
 
 template "/var/named/office-ore.net.db" do
-  mode 0640
+  mode 0644
+  user "named"
+  group "named"
   notifies :reload, "service[named]"
 end
 
