@@ -24,7 +24,7 @@ Vagrant.configure("2") do |config|
     vm.berkshelf.enabled = true
 
     vm.vm.provision :chef_solo do |chef|
-      chef.run_list = ["hello"]
+      chef.run_list = ["client"]
     end
   end
    
