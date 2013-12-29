@@ -71,3 +71,9 @@ service "named" do
   supports status: true, restart: true, reload: true
   action [:enable, :start]
 end
+
+template "/etc/resolv.conf" do
+  mode 0644
+  user "root"
+  group "root"
+end
