@@ -15,4 +15,10 @@ template "/etc/postfix/main.cf" do
   user "root"
   group "root"
   mode 0644
+  notifies :reload, "service[postfix]"
+end
+
+service "postfix" do
+  supports status: true, restart: true, reload: true
+  action [:enable, :start]
 end

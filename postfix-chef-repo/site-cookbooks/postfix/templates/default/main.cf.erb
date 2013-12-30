@@ -12,7 +12,7 @@ mail_owner = postfix
 
 #default_privs = nobody
 
-#myhostname = host.domain.tld
+myhostname = office-ore.net
 #myhostname = virtual.domain.tld
 
 #mydomain = domain.tld
@@ -112,7 +112,6 @@ debug_peer_level = 2
 
 debugger_command =
 PATH=/bin:/usr/bin:/usr/local/bin:/usr/X11R6/bin
-ddd $daemon_directory/$process_name $process_id & sleep 5
 
 sendmail_path = /usr/sbin/sendmail.postfix
 
