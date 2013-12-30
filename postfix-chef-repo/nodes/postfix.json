@@ -1,1 +1,1 @@
-{"run_list":["postfix"]}
+{"run_list":["postfix", "app"]}
