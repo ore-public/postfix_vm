@@ -1,1 +1,15 @@
-{"run_list":["postfix", "app"]}
+{
+    "rbenv": {
+        "user_installs": [
+            {
+                "global": "2.1.0",
+                "group": "app",
+                "rubies": ["2.0.0-p353", "2.1.0"],
+                "user": "app"
+            }
+        ]
+    },
+    "run_list": [
+        "postfix", "app", "ruby_build", "rbenv::user"
+    ]
+}
